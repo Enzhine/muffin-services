@@ -13,3 +13,10 @@ spec:
     route:
     - destination:
         host: {{ include "muffin-wallet.fullname" . }}
+    # timeout
+    timeout: 5s
+    # retry
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: connect-failure,refused-stream,unavailable,cancelled

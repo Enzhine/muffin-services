@@ -5,7 +5,21 @@ metadata:
 spec:
   host: {{ include "muffin-currency.fullname" . }}
   trafficPolicy:
+    # internal tls
     tls:
       mode: ISTIO_MUTUAL
     loadBalancer:
       simple: LEAST_CONN
+    # requests limit
+    connectionPool:
+      tcp:
+        maxConnections: 1
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+    # circuit breaker
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
