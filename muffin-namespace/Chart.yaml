@@ -1,0 +1,7 @@
+apiVersion: v2
+name: muffin-namespace
+description: A namespace for muffin services
+
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

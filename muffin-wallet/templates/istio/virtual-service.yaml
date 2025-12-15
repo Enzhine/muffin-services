@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "muffin-wallet.fullname" . }}-vs
+spec:
+  gateways:
+    - "{{ include "muffin-wallet.fullname" . }}-gateway"
+  hosts:
+    - "{{ include "muffin-wallet.fullname" . }}"
+    - "wallet.example.com"
+  http:
+  - name: service-route
+    route:
+    - destination:
+        host: {{ include "muffin-wallet.fullname" . }}

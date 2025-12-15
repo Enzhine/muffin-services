@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ include "muffin-wallet.fullname" . }}-dest-rule
+spec:
+  host: {{ include "muffin-wallet.fullname" . }}
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+    loadBalancer:
+      simple: LEAST_CONN

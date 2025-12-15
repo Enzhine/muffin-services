@@ -1,0 +1,10 @@
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  name: {{ include "muffin-currency.fullname" . }}-peer-auth
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "muffin-currency.name" . }}
+  mtls:
+    mode: STRICT

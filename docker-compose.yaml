@@ -1,0 +1,12 @@
+services:
+  pgdb:
+    image: postgres:16
+#    restart: always
+    shm_size: 256mb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./postgres/tmp:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d

@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: {{ include "muffin-currency.fullname" . }}-auth-policy
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "muffin-currency.name" . }}
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+        - "cluster.local/ns/muffin-namespace/sa/default"

@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ include "muffin-wallet.fullname" . }}-gateway
+spec:
+  selector:
+    istio: {{ .Values.istioIngress.podLabel }}
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "wallet.example.com"
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "wallet.example.com"
+    tls:
+      mode: SIMPLE
+      credentialName: muffin-wallet-dummy-tls

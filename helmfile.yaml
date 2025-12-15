@@ -1,0 +1,23 @@
+releases:
+  - name: muffin-namespace
+    namespace: default
+    wait: true
+    chart: ./muffin-namespace
+
+  - name: muffin-currency
+    createNamespace: false
+    namespace: muffin-namespace
+    chart: ./muffin-currency
+    wait: true
+    timeout: 120
+    needs:
+      - default/muffin-namespace
+
+  - name: muffin-wallet
+    createNamespace: false
+    namespace: muffin-namespace
+    chart: ./muffin-wallet
+    wait: true
+    timeout: 120
+    needs:
+      - muffin-namespace/muffin-currency
