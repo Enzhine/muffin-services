@@ -57,7 +57,7 @@ Helm Chart `./muffin-currency` содержит подготовленный р�
 > Настроить Circuit Breaker и Retry для устойчивости к сбоям.
 Реализовать таймауты и лимиты на количество запросов.
 
-Helm Charts `./muffin-wallet` и `./muffin-currency` содержит подготовленные ресурсы `DestinationRule` и `VirtualService`.
+Helm Charts `./muffin-wallet` и `./muffin-currency` содержит подготовленные ресурсы `DestinationRule`, `VirtualService` и `EnvoyFilter`.
 
 **VirtualService, ServiceEntry, Gateway:**
 
